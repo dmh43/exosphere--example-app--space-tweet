@@ -21,7 +21,7 @@ app.set 'views', path.join(__dirname, '..', 'views')
   ..use bodyParser.json!
   ..use bodyParser.urlencoded extended: false
   ..use cookieParser!
-  ..use express.static path.join(__dirname, '..', 'public')
+  ..use express.static path.join(__dirname, '..', 'app')
 
   ..use '/', index
   ..use '/users', users

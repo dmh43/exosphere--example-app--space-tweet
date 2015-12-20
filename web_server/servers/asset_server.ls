@@ -10,9 +10,9 @@ compiler = webpack require('./webpack_config.ls')
 
 
 module.exports = new webpack-dev-server compiler,
-  publicPath: '/build/',
+  public-path: '/build/',
   hot: true,
   quiet: false,
-  noInfo: true,
+  no-info: true,
   stats:
     colors: true
