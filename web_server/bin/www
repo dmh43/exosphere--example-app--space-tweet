@@ -1,7 +1,7 @@
 #!/usr/bin/env lsc
 
 require! {
-  '../app'
+  '../server/app'
   'http'
   '../server/assets.ls' : asset-server
 }
