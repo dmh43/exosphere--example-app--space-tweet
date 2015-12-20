@@ -32,9 +32,8 @@ module.exports = ->
     # The rest is terminal configurations
     quiet: false,
     noInfo: true,
-    stats: {
+    stats:
       colors: true
-    }
 
   # We fire up the development server and give notice in the terminal
   bundler.listen 8080, 'localhost', ->
