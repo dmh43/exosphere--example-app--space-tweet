@@ -9,8 +9,7 @@ debug = require('debug')('web_server:server')
 
 server = http.createServer app
 
-bundle = require '../server/bundle.ls'
-bundle!
+asset-server = require('../server/assets.ls')
 
 server.on 'error', (error) ->
   | error.syscall isnt 'listen'  =>  throw error
@@ -30,3 +29,6 @@ server.on 'listening', ->
 
 
 server.listen parse-int(process.env.PORT or '3000')
+
+asset-server.listen 8080, 'localhost', ->
+  console.log 'Starting asset server...'
