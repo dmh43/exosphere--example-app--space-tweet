@@ -1,10 +1,27 @@
 #!/usr/bin/env lsc
 
-require! '../app'
+require! {
+  '../app'
+  'http'
+  'http-proxy'
+}
+
+proxy = httpProxy.createProxyServer!
+
 debug = require('debug')('web_server:server')
-require! 'http'
 
 server = http.createServer app
+
+bundle = require '../server/bundle.js'
+bundle!
+
+app.all '/build/*', (req, res) ->
+  proxy.web req, res, target: 'http://localhost:8080'
+
+
+proxy.on 'error', (e) ->
+  console.log('Could not connect to proxy, please try again...')
+
 
 server.on 'error', (error) ->
   | error.syscall isnt 'listen'  =>  throw error
