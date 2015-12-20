@@ -1,7 +1,7 @@
 require! {
   'webpack'
   'webpack-dev-server'
-  './../webpack.config.ls' : webpack-config
+  './webpack.config.ls' : webpack-config
   'path'
   'fs'
 }

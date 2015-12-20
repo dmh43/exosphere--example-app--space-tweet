@@ -1,6 +1,6 @@
-# Exosphere developer SDK POC
+# Exosphere Developer SDK POC
 
-This is a POC of the Exosphere developer SDK.
+This is a proof of concept of the Exosphere developer SDK.
 
 
 ## Installation

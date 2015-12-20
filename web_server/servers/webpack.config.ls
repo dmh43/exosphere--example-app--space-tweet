@@ -12,7 +12,7 @@ module.exports =
   entry:
     'webpack/hot/dev-server'                                      # For hot style updates
     'webpack-dev-server/client?http://localhost:8080'             # The script refreshing the browser on none hot updates
-     path.resolve __dirname, 'public', 'javascripts', 'main.ls'   # Our application
+     path.resolve __dirname, '..', 'public', 'javascripts', 'main.ls'   # Our application
 
 
   output:
@@ -22,7 +22,7 @@ module.exports =
     # error will occur if nothing is specified. We use the build path
     # as that points to where the files will eventually be bundled
     # in production
-    path: path.resolve(__dirname, 'public', 'build')
+    path: path.resolve(__dirname, '..', 'public', 'build')
     filename: 'bundle.js'
 
     # Everything related to Webpack should go through a build path,
@@ -36,7 +36,7 @@ module.exports =
 
       * test: /\.ls$/
         loader: 'livescript'
-        exclude: [ path.resolve __dirname, 'node_modules' ]
+        exclude: [ path.resolve __dirname, '..', 'node_modules' ]
 
       * test: /\.css$/
         loader: 'style!css'

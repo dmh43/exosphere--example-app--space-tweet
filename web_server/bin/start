@@ -1,14 +1,14 @@
 #!/usr/bin/env lsc
 
 require! {
-  '../server/app'
   'http'
-  '../server/assets.ls' : asset-server
+  '../servers/app_server.ls' : app-server
+  '../servers/asset_server.ls' : asset-server
 }
 debug = require('debug')('web:server')
 
 
-server = http.createServer app
+server = http.createServer app-server
 server.on 'error', (error) ->
   | error.syscall isnt 'listen'  =>  throw error
 
