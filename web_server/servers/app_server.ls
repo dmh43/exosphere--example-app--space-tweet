@@ -13,7 +13,7 @@ require! {
 app = express!
 
 # view engine setup
-app.set 'views', path.join(__dirname, '..', 'views')
+app.set 'views', path.join(__dirname, '..', 'app', 'views')
   ..set 'view engine', \jade
 
   # ..use(serve-favicon(path.join(__dirname, 'public', 'favicon.ico')))
