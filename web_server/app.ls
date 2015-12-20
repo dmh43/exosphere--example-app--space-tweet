@@ -6,6 +6,7 @@ require! {
   'cookie-parser'
   'body-parser'
   './routes/index'
+  './routes/users'
 }
 
 
@@ -23,6 +24,7 @@ app.set 'views', path.join(__dirname, 'views')
   ..use express.static path.join(__dirname, 'public')
 
   ..use '/', index
+  ..use '/users', users
 
   ..use (req, res, next) ->   # route not found
     err = new Error 'Not Found'

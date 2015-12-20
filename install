@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+
+# install Foreman
+gem install foreman
+
+
+# install dispatcher
+cd dispatcher
+rm -rf node_modules/
+npm install
+cd ..
+
+
+# install the web server
+cd web_server
+rm -rf node_modules/
+npm install
+cd ..
