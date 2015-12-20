@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "lsc ./bin/www"
+    "start": "env DEBUG='web_server:*' lsc ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
