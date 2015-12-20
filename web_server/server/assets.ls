@@ -5,18 +5,16 @@ require! {
   'path'
   'fs'
 }
+debug = require('debug')('web:assets')
 
-
-compilation-start-time = null
 
 compiler = webpack webpack-config
 
 compiler.plugin 'compile', ->
-  console.log 'bundling...'
-  compilation-start-time := Date.now!
+  debug 'starting asset compilation'
 
 compiler.plugin 'done', ->
-  console.log "Bundled in #{Date.now! - compilation-start-time}ms!"
+  debug "asset compilation completed"
 
 
 module.exports = new webpack-dev-server compiler,
