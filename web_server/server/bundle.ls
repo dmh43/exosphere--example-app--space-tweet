@@ -6,21 +6,19 @@ require! {
   'fs'
 }
 
-mainPath = path.resolve __dirname, '..', 'public', 'javascripts', 'main.ls'
 
+compilation-start-time = null
 
 module.exports = ->
 
-  # fire up Webpack and pass in the configuration we created
-  bundle-start = null
   compiler = webpack webpack-config
 
   compiler.plugin 'compile', ->
-    console.log 'Bundling...'
-    bundle-start := Date.now!
+    console.log 'bundling...'
+    compilation-start-time := Date.now!
 
   compiler.plugin 'done', ->
-    console.log "Bundled in #{Date.now! - bundle-start}ms!"
+    console.log "Bundled in #{Date.now! - compilation-start-time}ms!"
 
   bundler = new webpack-dev-server compiler,
 
