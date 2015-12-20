@@ -5,8 +5,8 @@ require! {
   \morgan : logger
   'cookie-parser'
   'body-parser'
-  '../routes/index'
-  '../routes/users'
+  '../app/routes/index'
+  '../app/routes/users'
 }
 
 
