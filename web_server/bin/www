@@ -9,7 +9,7 @@ debug = require('debug')('web_server:server')
 
 server = http.createServer app
 
-bundle = require '../server/bundle.js'
+bundle = require '../server/bundle.ls'
 bundle!
 
 server.on 'error', (error) ->
