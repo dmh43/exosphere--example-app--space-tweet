@@ -6,7 +6,7 @@ require! {
   'fs'
 }
 
-mainPath = path.resolve __dirname, '..', 'app', 'main.ls'
+mainPath = path.resolve __dirname, '..', 'public', 'javascripts', 'main.ls'
 
 
 module.exports = ->
