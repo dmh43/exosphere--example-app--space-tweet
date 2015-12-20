@@ -38,4 +38,4 @@ module.exports = ->
 
   # We fire up the development server and give notice in the terminal
   bundler.listen 8080, 'localhost', ->
-    console.log 'Bundling project...'
+    console.log 'Starting asset server...'
