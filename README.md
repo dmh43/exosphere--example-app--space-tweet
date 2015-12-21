@@ -24,6 +24,7 @@ This app consists of the following services:
 
 * [web server](web_server): serves the web UI to the outside world
 * [api server](api_server): serves the GraphQL data API to the outside world
+* [messaging](messaging): provides messaging between services
 * [people service](people_service): stores user information (name, email, ...)
 * [sessions service](sessions_service): stores who is logged in
 * [tweets service](tweets_service): stores tweet data (content)

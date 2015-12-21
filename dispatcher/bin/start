@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-DEBUG='dispatcher:*' lsc servers/server.ls

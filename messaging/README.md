@@ -1,4 +1,4 @@
-# Exosphere Dispatcher component
+# Exosphere Messaging Development server
 
 Implements the messaging system locally, i.e. dispatches messages between services.
 
@@ -13,6 +13,6 @@ npm i
 ## Start
 
 ```
-env DEBUG='dispatcher:*' npm start
+env DEBUG='messaging:*' npm start
 ```
 

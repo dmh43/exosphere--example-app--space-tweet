@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+DEBUG='messaging:*' lsc servers/server.ls

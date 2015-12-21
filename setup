@@ -6,8 +6,8 @@ set -e
 gem install foreman
 
 
-# install dispatcher
-( cd dispatcher ; rm -rf node_modules ; npm install )
+# install messaging
+( cd messaging ; rm -rf node_modules ; npm install )
 
 # install the web server
 ( cd web_server ; bin/setup )

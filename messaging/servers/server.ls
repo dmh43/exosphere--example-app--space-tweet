@@ -2,7 +2,7 @@ require! {
   'http'
   './app-server'
 }
-debug = require('debug')('dispatcher:server')
+debug = require('debug')('messaging:server')
 
 
 on-server-error = (error) ->
