@@ -5,14 +5,13 @@
 # * asset_server: serves assets
 require! {
   'http'
-  '../servers/html_server.ls' : app-server
-  '../servers/asset_server.ls' : asset-server
+  '../servers/html-server.ls'
+  '../servers/asset-server.ls'
 }
 debug = require('debug')('web:server')
 
 
-server = http.createServer app-server
-server.on 'error', (error) ->
+on-server-error = (error) ->
   | error.syscall isnt 'listen'  =>  throw error
 
   console.error switch error.code
@@ -21,11 +20,12 @@ server.on 'error', (error) ->
   | _             =>  error
   process.exit 1
 
-server.on 'listening', ->
-  debug "web server online at port #{server.address!port}"
 
+server = http.create-server html-server
+  ..on 'listening', -> debug "html server online at port #{server.address!port}"
+  ..on 'error', on-server-error
+  ..listen parse-int(process.env.PORT or '3000')
 
-server.listen parse-int(process.env.PORT or '3000')
 
 asset-server.listen 8080, 'localhost', ->
   debug 'asset server online at port 8080'

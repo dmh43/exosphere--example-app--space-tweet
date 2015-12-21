@@ -1,10 +1,11 @@
 require! {
   'webpack'
+  './webpack-config'
   'webpack-dev-server'
 }
 debug = require('debug')('web:assets')
 
-compiler = webpack require('./webpack_config.ls')
+compiler = webpack webpack-config
   ..plugin 'compile', -> debug 'starting asset compilation'
   ..plugin 'done', -> debug "asset compilation completed"
 
