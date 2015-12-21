@@ -5,14 +5,13 @@ require! {
   \morgan : logger
   'cookie-parser'
   'body-parser'
-  './routes/index'
 }
 
 
 app = express!
 
 # view engine setup
-app.set 'views', path.join(__dirname, 'views')
+app.set 'views', path.join(__dirname, '..', 'app', 'server', 'views')
   ..set 'view engine', \jade
 
   # ..use(serve-favicon(path.join(__dirname, 'public', 'favicon.ico')))
@@ -20,9 +19,9 @@ app.set 'views', path.join(__dirname, 'views')
   ..use bodyParser.json!
   ..use bodyParser.urlencoded extended: false
   ..use cookieParser!
-  ..use express.static path.join(__dirname, 'public')
+  ..use express.static path.join(__dirname, '..', 'app', 'client')
 
-  ..use '/', index
+  ..use '/', require('../app/server/controllers/index.ls')
 
   ..use (req, res, next) ->   # route not found
     err = new Error 'Not Found'

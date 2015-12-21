@@ -1,6 +1,6 @@
 require! {
   \express
-  '../package.json' : config
+  '../../../package.json' : config
 }
 
 router = express.Router!

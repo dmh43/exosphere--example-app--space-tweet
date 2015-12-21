@@ -5,7 +5,7 @@
  */
 
 require('livescript');
-var app = require('../app');
+var app = require('../servers/app');
 var debug = require('debug')('dispatcher:server');
 var http = require('http');
 
