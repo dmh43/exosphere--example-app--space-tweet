@@ -1,0 +1,17 @@
+{
+  "name": "exosphere-sdk-poc-users-service",
+  "version": "0.0.1",
+  "description": "Stores user account data",
+  "main": "app.ls",
+  "scripts": {
+    "test": "spec"
+  },
+  "author": "Kevin Goslar",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "debug": "^2.2.0",
+    "mongodb": "^2.0.52",
+    "nitroglycerin": "0.0.6"
+  }
+}

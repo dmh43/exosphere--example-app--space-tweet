@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+
+env DEBUG='users' PORT=3010 lsc server.ls
