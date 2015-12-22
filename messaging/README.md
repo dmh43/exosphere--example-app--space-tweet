@@ -1,6 +1,7 @@
-# Exosphere Messaging Development server
+# Exosphere messaging framework for development mode
 
-Implements the messaging system locally, i.e. dispatches messages between services.
+Implements the messaging system (dispatching messages between services)
+locally without an underlying Kafka instance.
 
 
 ## Installation

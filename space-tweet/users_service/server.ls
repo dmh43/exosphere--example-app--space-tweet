@@ -1,5 +1,5 @@
 debug = require('debug')('users')
-require! '../exosphere-service-node'
+require! '../../exosphere-service-node'
 mongo-client = require('mongodb').MongoClient
 N = require 'nitroglycerin'
 
