@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "debug": "^2.2.0",
+    "exosphere-service-node": "file:../../exosphere-service-node",
     "mongodb": "^2.0.52",
     "nitroglycerin": "0.0.6"
   }
