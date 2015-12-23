@@ -14,8 +14,7 @@ Feature: Recording calls
     Given a http-listener instance listening on port 7778
     When I send a GET request to http://localhost:7778/one
     And I send a GET request to http://localhost:7778/two
-    Then the call succeeds
-    And retrieving the recorded calls yields:
+    Then retrieving the recorded calls yields:
       """
       [
         {
