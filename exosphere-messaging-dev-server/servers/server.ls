@@ -15,7 +15,11 @@ on-server-error = (error) ->
   process.exit 1
 
 
-server = http.create-server app-server
-  ..on 'listening', -> debug "web server online at port #{server.address!port}"
-  ..on 'error', on-server-error
-  ..listen parse-int(process.env.PORT or '3000')
+listen = (port, done) ->
+  http.create-server app-server
+    ..on 'listening', -> debug "web server online at port #{port}"
+    ..on 'error', on-server-error
+    ..listen parse-int(process.env.PORT or '3000')
+
+
+module.exports = {listen}

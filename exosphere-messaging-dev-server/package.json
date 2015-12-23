@@ -2,6 +2,7 @@
   "name": "exosphere-messaging-dev-server",
   "version": "0.0.1",
   "private": true,
+  "main": "servers/server.ls",
   "scripts": {
     "start": "node ./bin/www"
   },
