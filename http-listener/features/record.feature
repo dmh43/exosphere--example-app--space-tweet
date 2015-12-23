@@ -11,10 +11,10 @@ Feature: Recording calls
 
 
   Scenario: recording GET requests
-    Given a http-listener instance listening on port 7778
-    When I send a GET request to http://localhost:7778/one
-    And I send a GET request to http://localhost:7778/two
-    Then retrieving the recorded calls yields:
+    Given a http-listener instance listening on port 7777
+    When sending a GET request to http://localhost:7777/one
+    And sending a GET request to http://localhost:7777/two
+    Then the recorded calls are:
       """
       [
         {
