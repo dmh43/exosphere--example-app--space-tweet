@@ -13,7 +13,7 @@ Feature: Recording calls
   Scenario: recording GET requests
     Given a http-listener instance listening on port 7777
     When sending a GET request to http://localhost:7777/one
-    And sending a GET request to http://localhost:7777/two
+    And another GET request to http://localhost:7777/two
     Then the recorded calls are:
       """
       [

@@ -15,7 +15,13 @@ Feature: Running different instances one at a time on the same port
     And a GET request to http://localhost:7777/first
     When closing this instance
     Then requests to http://localhost:7777 are no longer possible
-    When setting up another http-listener instance listening on port 7777
+
+
+  Scenario: re-opening the same port on another listener
+    Given a http-listener instance listening on port 7777
+    And a GET request to http://localhost:7777/first
+    When closing this instance
+    And setting up another http-listener instance listening on port 7777
     And a GET request to http://localhost:7777/second
     Then the recorded calls are:
       """

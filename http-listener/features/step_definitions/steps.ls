@@ -9,7 +9,7 @@ module.exports = ->
     @instance = new HttpListener!listen port, done
 
 
-  @When /^a GET request to (.+)$/, (url, done) ->
+  @When /^(?:sending )?(?:a|another) GET request to (.+)$/, (url, done) ->
     request url, (error, response, body) ~>
       expect(error).to.be.null
       expect(response.status-code).to.equal 200
