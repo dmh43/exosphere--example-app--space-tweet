@@ -4,15 +4,19 @@
   "description": "Stores user account data",
   "main": "app.ls",
   "scripts": {
-    "test": "spec"
+    "test": "cucumber-js"
   },
   "author": "Kevin Goslar",
   "license": "ISC",
   "private": true,
   "dependencies": {
     "debug": "^2.2.0",
-    "exosphere-service-node": "file:../../exosphere-service-node",
     "mongodb": "^2.0.52",
     "nitroglycerin": "0.0.6"
+  },
+  "devDependencies": {
+    "cucumber": "^0.9.2",
+    "livescript": "^1.4.0",
+    "portfinder": "^0.4.0"
   }
 }

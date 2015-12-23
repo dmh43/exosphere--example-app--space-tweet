@@ -1,47 +1,43 @@
 Feature: Creating users
 
-  As the SpaceTweet CEO
-  I want to create user accounts
-  So that people can use my application and I meet my growth goals.
-
-
   Rules:
   - users must have a name
+  - when successful, the service replies with "users.created"
+    and the newly created account
+  - when there is an error, the service replies with "users.not-created"
+    and a message describing the error
 
 
   Scenario: creating a valid user account
-    When creating a user with the attributes:
-      | NAME            |
-      | Jean-Luc Picard |
-    Then the service contains the users:
-      | NAME            |
-      | Jean-Luc Picard |
-
-
-  Scenario: trying to create a user account with an empty name
-    When trying to create a user with the attributes:
-      | NAME |
-      |      |
-
-    When sending "users.create" with the payload:
+    When sending the command "users.create" with the payload:
       """
       {
-        name: ''
+        name: 'Jean-Luc Picard'
       }
       """
-    Then the service replies with a "users.created" message and the payload:
+    Then the service replies with "users.created" and the payload:
       """
       {
         id: 1,
         name: 'Jean-Luc Picard'
       }
       """
-    And the service contains the users:
+    And the service contains the user accounts:
       | NAME            |
       | Jean-Luc Picard |
 
 
-  Scenario: trying to create a user account without a name field
-
-
-  Scenario: trying to create a user account with an unknown field
+  # Scenario: trying to create a user account with an empty name
+  #   When sending "users.create" with the payload:
+  #     """
+  #     {
+  #       name: ''
+  #     }
+  #     """
+  #   Then the service replies with a "users.not-created" message and the payload:
+  #     """
+  #     {
+  #       error: 'Name cannot be blank'
+  #     }
+  #     """
+  #   And the service contains no users
