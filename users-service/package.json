@@ -10,7 +10,9 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
+    "chalk": "^1.1.1",
     "debug": "^2.2.0",
+    "exoservice-js": "^0.4.1",
     "mongodb": "^2.0.52",
     "nitroglycerin": "0.0.6"
   },

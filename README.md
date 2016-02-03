@@ -1,21 +1,16 @@
-# Exosphere Developer SDK POC
+# SpaceTweet Example Application
 
-This is a proof of concept of the Exosphere developer SDK.
-It implements a simple Twitter clone (SpaceTweet) as a practical example.
+SpaceTweet is a medium-sized example Exosphere application.
+It is a Twitter clone that allows to
+* log in as a user
+* tweet things
+* comment on tweets
 
-
-## Installation
-
-```
-./install
-```
-
-
-## Run
-
-```
-./start
-```
+It uses the following micro-services:
+* users service: stores user details (name)
+* sessions service: stores user session details
+* tweets service: stores tweets
+* comments service: stores comments for tweets
 
 
 ## Architecture

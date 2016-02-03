@@ -1,0 +1,7 @@
+- setup:
+  - rm -rf node_modules/
+  - npm install
+
+
+- start:
+  - exo-js run --port 3010
