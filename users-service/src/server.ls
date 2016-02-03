@@ -2,16 +2,18 @@ require! {
   'mongodb' : {MongoClient}
   'nitroglycerin' : N
 }
-debug = require('debug')('users')
-
-
-db = null
-MongoClient.connect 'mongodb://localhost:27017/exosphere-sdk-poc-users', N (mongo-db) ->
-  db := mongo-db
-  debug 'MongoDB connected'
+debug = require('debug')('users-service')
 
 
 module.exports =
+
+  before-all: (done) ->
+    MongoClient.connect 'mongodb://localhost:27017/space-tweet-users', N (mongo-db) ->
+      @db = mongo-db
+      @collection = db.collection 'users'
+      debug 'MongoDB connected'
+      done!
+
 
   'users.create': ({name}, {reply}) ->
     | not name  =>  return reply 'users.not-created', error: 'Name cannot be blank'
@@ -21,4 +23,5 @@ module.exports =
 
 
   'users.list': (_, {reply}) ->
-    reply 'users.listed', count: 0, users: []
+    collection.find({}).to-array N (users) ->
+      reply 'users.listed', count: users.length, users: users
