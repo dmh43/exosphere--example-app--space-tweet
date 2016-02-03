@@ -13,7 +13,7 @@ MongoClient.connect 'mongodb://localhost:27017/exosphere-sdk-poc-users', N (mong
 
 module.exports =
 
-  'users.create': ({name}) ->
+  'users.create': ({name}, {reply}) ->
     debug "creating user #{name}"
     # db.create ...
-    # response.send id: 1, name: name
+    reply 'users.created', id: 1, name: name

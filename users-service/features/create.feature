@@ -8,23 +8,24 @@ Feature: Creating users
     and a message describing the error
 
 
+  Background:
+    Given an ExoComm server running at port 4100
+    And an instance of this service running at port 4000
+
+
   Scenario: creating a valid user account
     When sending the command "users.create" with the payload:
       """
-      {
-        name: 'Jean-Luc Picard'
-      }
+      name: 'Jean-Luc Picard'
       """
     Then the service replies with "users.created" and the payload:
       """
-      {
-        id: 1,
-        name: 'Jean-Luc Picard'
-      }
+      id: 1
+      name: 'Jean-Luc Picard'
       """
-    And the service contains the user accounts:
-      | NAME            |
-      | Jean-Luc Picard |
+    # And the service contains the user accounts:
+    #   | NAME            |
+    #   | Jean-Luc Picard |
 
 
   # Scenario: trying to create a user account with an empty name
