@@ -22,6 +22,17 @@ module.exports = ->
       ..wait 'online at port', done
 
 
+
+  @When /^sending the command "([^"]*)"$/, (command, done) ->
+    request-data =
+      url: "http://localhost:#{@service-port}/run/#{command}",
+      method: 'POST'
+      body:
+        requestId: '123'
+      json: yes
+    request request-data, done
+
+
   @When /^sending the command "([^"]*)" with the payload:$/, (command, payload, done) ->
     eval livescript.compile "json-payload = {\n#{payload}\n}", bare: yes, header: no
     request-data =

@@ -18,3 +18,7 @@ module.exports =
     debug "creating user #{name}"
     # db.create ...
     reply 'users.created', id: 1, name: name
+
+
+  'users.list': (_, {reply}) ->
+    reply 'users.listed', count: 0, users: []
