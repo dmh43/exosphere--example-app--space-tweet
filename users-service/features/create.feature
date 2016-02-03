@@ -28,17 +28,13 @@ Feature: Creating users
     #   | Jean-Luc Picard |
 
 
-  # Scenario: trying to create a user account with an empty name
-  #   When sending "users.create" with the payload:
-  #     """
-  #     {
-  #       name: ''
-  #     }
-  #     """
-  #   Then the service replies with a "users.not-created" message and the payload:
-  #     """
-  #     {
-  #       error: 'Name cannot be blank'
-  #     }
-  #     """
-  #   And the service contains no users
+  Scenario: trying to create a user account with an empty name
+    When sending the command "users.create" with the payload:
+      """
+      name: ''
+      """
+    Then the service replies with "users.not-created" and the payload:
+      """
+      error: 'Name cannot be blank'
+      """
+    # And the service contains no users

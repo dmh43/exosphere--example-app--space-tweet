@@ -34,10 +34,12 @@ module.exports = ->
     request request-data, done
 
 
-  @Then /^the service replies with "([^"]*)" and the payload:$/, (expected-command, expected-payload, done) ->
+  @Then /^the service replies with "([^"]*)" and the payload:$/, (command, payload, done) ->
     condition = ~> @exocomm.calls.length is 1
     wait-until condition, ~>
       call = @exocomm.calls[0]
+      expect(call.url).to.equal "http://localhost:#{@exocomm-port}/send/#{command}"
       expect(call.body.response-to).to.equal '123'
-      expect(call.body.payload).to.eql id: 1, name: 'Jean-Luc Picard'
+      eval livescript.compile "json-payload = {\n#{payload}\n}", bare: yes, header: no
+      expect(call.body.payload).to.eql json-payload
       done!

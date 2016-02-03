@@ -14,6 +14,7 @@ MongoClient.connect 'mongodb://localhost:27017/exosphere-sdk-poc-users', N (mong
 module.exports =
 
   'users.create': ({name}, {reply}) ->
+    | not name  =>  return reply 'users.not-created', error: 'Name cannot be blank'
     debug "creating user #{name}"
     # db.create ...
     reply 'users.created', id: 1, name: name
