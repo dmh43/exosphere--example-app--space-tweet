@@ -10,7 +10,7 @@ Feature: Creating users
 
   Background:
     Given an ExoComm server running at port 4100
-    And an instance of this service running at port 4000
+    And a fresh instance of this service running at port 4000
 
 
   Scenario: creating a valid user account
@@ -20,12 +20,12 @@ Feature: Creating users
       """
     Then the service replies with "users.created" and the payload:
       """
-      id: 1
+      id: /\d+/
       name: 'Jean-Luc Picard'
       """
-    # And the service contains the user accounts:
-    #   | NAME            |
-    #   | Jean-Luc Picard |
+    And the service contains the user accounts:
+      | NAME            |
+      | Jean-Luc Picard |
 
 
   Scenario: trying to create a user account with an empty name
