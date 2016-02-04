@@ -42,13 +42,13 @@ module.exports = ->
 
 
 
-  @When /^sending the command "([^"]*)"$/, (command, done) ->
-    @exocomm.send-command service: 'users', name: command, done
+  @When /^sending the command "([^"]*)"$/, (command) ->
+    @exocomm.send-command service: 'users', name: command
 
 
-  @When /^sending the command "([^"]*)" with the payload:$/, (command, payload, done) ->
+  @When /^sending the command "([^"]*)" with the payload:$/, (command, payload) ->
     eval livescript.compile "payload-json = {\n#{payload}\n}", bare: true, header: no
-    @exocomm.send-command service: 'users', name: command, payload: payload-json, done
+    @exocomm.send-command service: 'users', name: command, payload: payload-json
 
 
   @Then /^the service contains the user accounts:$/, (table, done) ->

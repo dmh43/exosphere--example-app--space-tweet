@@ -20,7 +20,7 @@
     "chai": "^3.5.0",
     "cucumber": "^0.9.2",
     "david": "^7.0.0",
-    "exocomm-mock": "^0.2.4",
+    "exocomm-mock": "^0.2.5",
     "exorelay": "^0.8.0",
     "is-regexp": "^1.0.0",
     "jsdiff-console": "^1.1.3",
