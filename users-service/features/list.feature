@@ -19,3 +19,15 @@ Feature: Listing all users
 
 
   Scenario: users exist in the database
+    Given the service contains the users:
+      | NAME            |
+      | Jean-Luc Picard |
+    When sending the command "users.list"
+    Then the service replies with "users.listed" and the payload:
+      """
+      count: 1
+      users: [
+        * name: 'Jean-Luc Picard'
+          id: /\d+/
+      ]
+      """
