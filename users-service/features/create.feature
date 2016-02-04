@@ -10,7 +10,7 @@ Feature: Creating users
 
   Background:
     Given an ExoComm server running at port 4100
-    And a fresh instance of this service running at port 4000
+    And an instance of this service running at port 4000
 
 
   Scenario: creating a valid user account
