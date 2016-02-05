@@ -10,11 +10,13 @@ Feature: Performance
   - the server must be able to process 1000 parallel requests within 5 ms each
 
 
+  @todo
   Scenario: single request performance
     When creating a user account
     Then the request is processed in less than 2 milliseconds
 
 
+  @todo
   Scenario: parallel request performance
     When creating 1000 user accounts in parallel
     Then each request is processed in less than 5 milliseconds
