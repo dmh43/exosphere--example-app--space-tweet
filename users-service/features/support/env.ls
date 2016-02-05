@@ -5,4 +5,4 @@ module.exports = ->
 
   @After ->
     @exocomm?.close!
-    @process?.kill!
+    @process?.close!

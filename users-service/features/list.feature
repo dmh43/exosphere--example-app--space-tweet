@@ -5,8 +5,8 @@ Feature: Listing all users
 
 
   Background:
-    Given an ExoComm server running at port 4100
-    And an instance of this service running at port 4000
+    Given an ExoComm server
+    And an instance of this service
 
 
   Scenario: no users exist in the database

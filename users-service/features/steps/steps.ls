@@ -2,6 +2,7 @@ require! {
   '../support/dim-console'
   'chai' : {expect}
   'exocomm-mock' : ExoCommMock
+  'exoservice' : ExoService
   'jsdiff-console'
   'livescript'
   'nitroglycerin' : N
@@ -15,26 +16,29 @@ require! {
 
 module.exports = ->
 
-  @Given /^an ExoComm server running at port (\d+)$/, (port, done) ->
+  @Given /^an ExoComm server$/, (done) ->
+    @exocomm-port = 4100
     @exocomm = new ExoCommMock
-      ..listen port, done
+      ..listen @exocomm-port, done
 
 
-  @Given /^an instance of this service running at port (\d+)$/, (@service-port, done) ->
+  @Given /^an instance of this service$/, (done) ->
+    @service-port = 4000
     @exocomm.register-service name: 'users', port: @service-port
-    @process = new ObservableProcess("node_modules/.bin/exo-js run --port #{@service-port} --exocomm-port #{@exocomm.port}",
-                                     console: dim-console
-                                     verbose: yes)
-      ..wait "online at port #{@service-port}", ~>
-        @exocomm.send-command service: 'users', name: 'reset'
-        @exocomm.wait-until-receive ~>
-            @exocomm.reset!
+    @process = new ExoService exocomm-port: @exocomm.port
+      ..listen port: @service-port
+      ..on 'online', ~>
+        @exocomm
+          ..reset!
+          ..send-command service: 'users', name: 'reset'
+          ..wait-until-receive ~>
             done!
 
 
   @Given /^the service contains the users:$/, (table, done) ->
     for user in table.hashes!
       @exocomm
+        ..reset!
         ..send-command service: 'users', name: 'users.create', payload: {name: user.NAME}
         ..wait-until-receive ~>
           @exocomm.reset!
@@ -43,16 +47,21 @@ module.exports = ->
 
 
   @When /^sending the command "([^"]*)"$/, (command) ->
-    @exocomm.send-command service: 'users', name: command
+    @exocomm
+      ..reset!
+      ..send-command service: 'users', name: command
 
 
   @When /^sending the command "([^"]*)" with the payload:$/, (command, payload) ->
     eval livescript.compile "payload-json = {\n#{payload}\n}", bare: true, header: no
-    @exocomm.send-command service: 'users', name: command, payload: payload-json
+    @exocomm
+      ..reset!
+      ..send-command service: 'users', name: command, payload: payload-json
 
 
   @Then /^the service contains the user accounts:$/, (table, done) ->
     @exocomm
+      ..reset!
       ..send-command service: 'users', name: 'users.list'
       ..wait-until-receive ~>
         actual-users = remove-ids @exocomm.received-commands![0].payload.users

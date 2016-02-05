@@ -12,7 +12,7 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "debug": "^2.2.0",
-    "exoservice-js": "^0.6.0",
+    "exoservice": "^0.7.1",
     "mongodb": "^2.0.52",
     "nitroglycerin": "^1.0.3"
   },
@@ -20,7 +20,7 @@
     "chai": "^3.5.0",
     "cucumber": "^0.9.2",
     "david": "^7.0.0",
-    "exocomm-mock": "^0.2.5",
+    "exocomm-mock": "^0.3.3",
     "exorelay": "^0.8.0",
     "is-regexp": "^1.0.0",
     "jsdiff-console": "^1.1.3",
