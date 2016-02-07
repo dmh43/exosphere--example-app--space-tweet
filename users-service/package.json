@@ -13,6 +13,7 @@
     "chalk": "^1.1.1",
     "debug": "^2.2.0",
     "exoservice": "^0.7.1",
+    "get-env": "0.4.0",
     "mongodb": "^2.0.52",
     "nitroglycerin": "^1.0.3"
   },

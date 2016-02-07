@@ -3,6 +3,7 @@ require! {
   'nitroglycerin' : N
 }
 debug = require('debug')('users-service')
+env = require('get-env')('test')
 
 
 collection = null
@@ -10,7 +11,7 @@ collection = null
 module.exports =
 
   before-all: (done) ->
-    MongoClient.connect 'mongodb://localhost:27017/space-tweet-users', N (mongo-db) ->
+    MongoClient.connect "mongodb://localhost:27017/space-tweet-users-#{env}", N (mongo-db) ->
       collection := mongo-db.collection 'users'
       debug 'MongoDB connected'
       done!
