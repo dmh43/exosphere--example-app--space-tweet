@@ -26,12 +26,13 @@ module.exports = ->
 
 
   @Given /^an instance of this service$/, (done) ->
-    portfinder.base-port = 4000
-    portfinder.get-port N (@service-port) ~>
-      @exocomm.register-service name: 'users', port: @service-port
-      @process = new ExoService exocomm-port: @exocomm.port
-        ..listen port: @service-port
-        ..on 'online', -> done!
+    portfinder
+      ..base-port = 4000
+      ..get-port N (@service-port) ~>
+        @exocomm.register-service name: 'users', port: @service-port
+        @process = new ExoService exocomm-port: @exocomm.port
+          ..listen port: @service-port
+          ..on 'online', -> done!
 
 
   @Given /^the service contains the users:$/, (table, done) ->
