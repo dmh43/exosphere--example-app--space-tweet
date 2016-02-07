@@ -54,6 +54,14 @@ module.exports = ->
       ..send-command service: 'users', name: command, payload: payload-json
 
 
+  @Then /^the service contains no users$/, (done) ->
+    @exocomm
+      ..send-command service: 'users', name: 'users.list'
+      ..wait-until-receive ~>
+        expect(@exocomm.received-commands![0].payload.count).to.equal 0
+        done!
+
+
   @Then /^the service contains the user accounts:$/, (table, done) ->
     @exocomm
       ..send-command service: 'users', name: 'users.list'
