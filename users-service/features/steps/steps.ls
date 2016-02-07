@@ -39,8 +39,7 @@ module.exports = ->
     for user in table.hashes!
       @exocomm
         ..send-command service: 'users', name: 'users.create', payload: {name: user.NAME}
-        ..wait-until-receive ~>
-          done!
+        ..wait-until-receive done
 
 
 
