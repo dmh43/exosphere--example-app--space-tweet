@@ -17,9 +17,9 @@ module.exports =
       done!
 
 
-  'users.create': ({name}, {reply}) ->
-    | not name  =>  return reply 'users.not-created', error: 'Name cannot be blank'
-    collection.insert-one {name}, (err, result) ->
+  'users.create': (user-data, {reply}) ->
+    | not user-data.name  =>  return reply 'users.not-created', error: 'Name cannot be blank'
+    collection.insert-one user-data, (err, result) ->
       | err  =>  return reply 'users.not-created', error: err
       user = result.ops[0]
       user.id = user._id ; delete user._id
