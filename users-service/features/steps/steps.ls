@@ -35,30 +35,25 @@ module.exports = ->
   @Given /^the service contains the users:$/, (table, done) ->
     for user in table.hashes!
       @exocomm
-        ..reset!
         ..send-command service: 'users', name: 'users.create', payload: {name: user.NAME}
         ..wait-until-receive ~>
-          @exocomm.reset!
           done!
 
 
 
   @When /^sending the command "([^"]*)"$/, (command) ->
     @exocomm
-      ..reset!
       ..send-command service: 'users', name: command
 
 
   @When /^sending the command "([^"]*)" with the payload:$/, (command, payload) ->
     eval livescript.compile "payload-json = {\n#{payload}\n}", bare: true, header: no
     @exocomm
-      ..reset!
       ..send-command service: 'users', name: command, payload: payload-json
 
 
   @Then /^the service contains the user accounts:$/, (table, done) ->
     @exocomm
-      ..reset!
       ..send-command service: 'users', name: 'users.list'
       ..wait-until-receive ~>
         actual-users = remove-ids @exocomm.received-commands![0].payload.users
@@ -71,4 +66,3 @@ module.exports = ->
       actual-payload = @exocomm.received-commands![0].payload
       eval livescript.compile "expected-payload = {\n#{payload}\n}", bare: yes, header: no
       jsdiff-console remove-ids(actual-payload), remove-ids(expected-payload), done
-      @exocomm.reset!
