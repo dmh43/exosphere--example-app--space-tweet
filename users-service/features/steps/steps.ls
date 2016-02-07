@@ -18,9 +18,11 @@ require! {
 module.exports = ->
 
   @Given /^an ExoComm server$/, (done) ->
-    @exocomm-port = 4100
-    @exocomm = new ExoCommMock
-      ..listen @exocomm-port, done
+    portfinder
+      ..base-port = 4100
+      ..get-port N (@exocomm-port) ~>
+        @exocomm = new ExoCommMock
+          ..listen @exocomm-port, done
 
 
   @Given /^an instance of this service$/, (done) ->
