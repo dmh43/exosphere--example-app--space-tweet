@@ -4,8 +4,7 @@
 # * app_server: HTML server
 # * asset_server: serves assets
 require! {
-  'http'
-  '../servers/html-server.ls'
+  '../servers/html-server.ls' : HtmlServer
   '../servers/asset-server.ls'
 }
 debug = require('debug')('web:server')
@@ -18,8 +17,8 @@ on-server-error = (error) ->
   | _             =>  error
 
 
-server = http.create-server html-server
-  ..on 'listening', -> debug "html server online at port #{server.address!port}"
+server = new HtmlServer
+  ..on 'listening', -> debug "html server online at port #{server.port!}"
   ..on 'error', on-server-error
   ..listen parse-int(process.env.PORT or '3000')
 
