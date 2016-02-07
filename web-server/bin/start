@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-DEBUG='web:*' lsc servers/server.ls
+DEBUG='*,-express:*' lsc servers/cli.ls
