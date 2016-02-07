@@ -26,6 +26,12 @@ module.exports =
       reply 'users.created', user
 
 
+  'users.create-many': (users, {reply}) ->
+    collection.insert users, (err, result) ->
+      | err  =>  return reply 'users.not-created-many', error: err
+      reply 'users.created-many', count: result.inserted-count
+
+
   'users.list': (_, {reply}) ->
     collection.find({}).to-array N (users) ->
       for user in users

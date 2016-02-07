@@ -22,12 +22,15 @@ Feature: Listing all users
     Given the service contains the users:
       | NAME            |
       | Jean-Luc Picard |
+      | Will Riker      |
     When sending the command "users.list"
     Then the service replies with "users.listed" and the payload:
       """
-      count: 1
+      count: 2
       users: [
         * name: 'Jean-Luc Picard'
+          id: /\d+/
+        * name: 'Will Riker'
           id: /\d+/
       ]
       """

@@ -36,10 +36,10 @@ module.exports = ->
 
 
   @Given /^the service contains the users:$/, (table, done) ->
-    for user in table.hashes!
-      @exocomm
-        ..send-command service: 'users', name: 'users.create', payload: {name: user.NAME}
-        ..wait-until-receive done
+    users = [{[key.to-lower-case!, value] for key, value of record} for record in table.hashes!]
+    @exocomm
+      ..send-command service: 'users', name: 'users.create-many', payload: users
+      ..wait-until-receive done
 
 
 
