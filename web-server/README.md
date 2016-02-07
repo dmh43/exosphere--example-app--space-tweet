@@ -2,11 +2,11 @@
 
 This is the web server component of the SpaceTweet application.
 
-It is a Node.js app written in LiveScript.
+It is an [ExpressJS](http://expressjs.com) app written in LiveScript.
 
 
 ## What is where
-Generally, the `app` contains all the application-specific logic.
+The [app](app) folder contains all the application-specific logic.
 This is the playground for app developers.
 The other directories contain all the hocus pocus necessary
 to make this Express app fly.
