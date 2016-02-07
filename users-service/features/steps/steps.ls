@@ -29,12 +29,7 @@ module.exports = ->
       @exocomm.register-service name: 'users', port: @service-port
       @process = new ExoService exocomm-port: @exocomm.port
         ..listen port: @service-port
-        ..on 'online', ~>
-          @exocomm
-            ..reset!
-            ..send-command service: 'users', name: 'reset'
-            ..wait-until-receive ~>
-              done!
+        ..on 'online', -> done!
 
 
   @Given /^the service contains the users:$/, (table, done) ->

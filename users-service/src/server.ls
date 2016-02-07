@@ -31,8 +31,3 @@ module.exports =
       for user in users
         user.id = user._id ; delete user._id
       reply 'users.listed', count: users.length, users: users
-
-
-  'reset': (_, {reply}) ->
-    collection.remove!
-    reply 'reseted'
