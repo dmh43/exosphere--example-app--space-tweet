@@ -7,6 +7,7 @@ require! {
   'livescript'
   'nitroglycerin' : N
   'observable-process' : ObservableProcess
+  'portfinder'
   'record-http' : HttpRecorder
   'request'
   '../support/remove-ids' : {remove-ids}
@@ -23,16 +24,17 @@ module.exports = ->
 
 
   @Given /^an instance of this service$/, (done) ->
-    @service-port = 4000
-    @exocomm.register-service name: 'users', port: @service-port
-    @process = new ExoService exocomm-port: @exocomm.port
-      ..listen port: @service-port
-      ..on 'online', ~>
-        @exocomm
-          ..reset!
-          ..send-command service: 'users', name: 'reset'
-          ..wait-until-receive ~>
-            done!
+    portfinder.base-port = 4000
+    portfinder.get-port N (@service-port) ~>
+      @exocomm.register-service name: 'users', port: @service-port
+      @process = new ExoService exocomm-port: @exocomm.port
+        ..listen port: @service-port
+        ..on 'online', ~>
+          @exocomm
+            ..reset!
+            ..send-command service: 'users', name: 'reset'
+            ..wait-until-receive ~>
+              done!
 
 
   @Given /^the service contains the users:$/, (table, done) ->
