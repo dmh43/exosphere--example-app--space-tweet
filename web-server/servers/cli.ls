@@ -20,9 +20,9 @@ doc = """
 Provides Exosphere communication infrastructure services in development mode.
 
 Usage:
-  #{name} [--html-port=<html-port>] [--assets-port=<assets-port>]
-  #{name} -h | --help
-  #{name} -v | --version
+  start [--html-port=<html-port>] [--assets-port=<assets-port>]
+  start -h | --help
+  start -v | --version
 """
 
 
