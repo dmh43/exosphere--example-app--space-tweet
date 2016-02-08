@@ -20,7 +20,7 @@ doc = """
 Provides Exosphere communication infrastructure services in development mode.
 
 Usage:
-  start [--html-port=<html-port>] [--assets-port=<assets-port>]
+  start --html-port=<html-port> --assets-port=<assets-port>
   start -h | --help
   start -v | --version
 """
@@ -29,7 +29,7 @@ Usage:
 start-html-server = (done) ->
   server = new HtmlServer
     ..on 'error', (err) -> console.log red err
-    ..listen +(options['--html-port'] or 3000)
+    ..listen +options['--html-port']
     ..on 'listening', ->
       console.log "#{green 'HTML server'} online at port #{cyan server.port!}"
       done!
@@ -37,7 +37,7 @@ start-html-server = (done) ->
 
 start-asset-server = (done) ->
   asset-server = new AssetServer
-    ..listen (options['--asset-port'] or 3001), ->
+    ..listen +options['--assets-port'], ->
       console.log "#{green 'asset server'} online at port #{cyan asset-server.port}"
       done!
 
