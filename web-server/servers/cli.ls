@@ -5,7 +5,7 @@
 # * asset_server: serves assets
 require! {
   'async'
-  'chalk' : {dim, red}
+  'chalk' : {cyan, dim, green, red}
   'docopt' : {docopt}
   '../package.json' : {name, version}
   '../servers/html-server.ls' : HtmlServer
@@ -31,20 +31,20 @@ start-html-server = (done) ->
     ..on 'error', (err) -> console.log red err
     ..listen +(options['--html-port'] or 3000)
     ..on 'listening', ->
-      debug "html server online at port #{server.port!}"
+      console.log "#{green 'HTML server'} online at port #{cyan server.port!}"
       done!
 
 
 start-asset-server = (done) ->
   asset-server = new AssetServer
     ..listen (options['--asset-port'] or 3001), ->
-      debug "asset server online at port #{asset-server.port}"
+      console.log "#{green 'asset server'} online at port #{cyan asset-server.port}"
       done!
 
 
 run = ->
   async.parallel [start-html-server, start-asset-server], (err) ->
-    console.log 'ready'
+    console.log green 'all systems go'
 
 
 

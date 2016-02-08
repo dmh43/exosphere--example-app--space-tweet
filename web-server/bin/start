@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-DEBUG='*,-express:*,-rails-delegate' lsc servers/cli.ls "$@"
+DEBUG='*,-express:*,-rails-delegate,-web:assets' lsc servers/cli.ls "$@"
