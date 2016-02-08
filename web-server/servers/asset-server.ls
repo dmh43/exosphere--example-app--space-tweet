@@ -24,7 +24,9 @@ class AssetServer extends EventEmitter
       stats:
         colors: true
 
-    delegate \listen, from: @, to: @server
+
+  listen: (@port, done) ->
+    @server.listen +port, 'localhost', done
 
 
 
