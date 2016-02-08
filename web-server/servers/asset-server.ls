@@ -1,19 +1,31 @@
 require! {
+  'events' : {EventEmitter}
+  'rails-delegate' : {delegate}
   'webpack'
   './webpack-config'
   'webpack-dev-server'
 }
 debug = require('debug')('web:assets')
 
-compiler = webpack webpack-config
-  ..plugin 'compile', -> debug 'starting asset compilation'
-  ..plugin 'done', -> debug "asset compilation completed"
+
+class AssetServer extends EventEmitter
+
+  ->
+
+    @compiler = webpack webpack-config
+      ..plugin 'compile', -> debug 'starting asset compilation'
+      ..plugin 'done', -> debug "asset compilation completed"
+
+    @server = new webpack-dev-server @compiler,
+      public-path: '/build/',
+      hot: true,
+      quiet: false,
+      no-info: true,
+      stats:
+        colors: true
+
+    delegate \listen, from: @, to: @server
 
 
-module.exports = new webpack-dev-server compiler,
-  public-path: '/build/',
-  hot: true,
-  quiet: false,
-  no-info: true,
-  stats:
-    colors: true
+
+module.exports = AssetServer
