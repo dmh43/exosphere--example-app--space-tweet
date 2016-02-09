@@ -26,4 +26,4 @@ This app consists of the following services:
 * [comments service](comments_service): stores comments for tweets
 * [photos service](photos_service): stores and serves photos for objects
 
-![architecture diagram](documentation/architecture.gif)
+![architecture diagram](documentation/architecture.png)
