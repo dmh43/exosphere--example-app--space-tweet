@@ -8,4 +8,4 @@ services:
   web:
     location: ./web-server
   users:
-    location: ~/users-service
+    location: ../exosphere-users-service
