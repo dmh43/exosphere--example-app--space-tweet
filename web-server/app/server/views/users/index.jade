@@ -2,6 +2,11 @@ extends ../layout
 
 block content
   img(src="images/logo.jpg" width=200 height=150)
-  h1 Users
+  h1 #{users.count} Users
+
+  ul
+    each user in users.users
+      li name: #{user.name}, password: #{user.password}
+
 
   a(href="/users/new") add a user

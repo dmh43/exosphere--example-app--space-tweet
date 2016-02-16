@@ -10,5 +10,8 @@ router.get '/', (req, res, next) ->
 router.get '/new', (req, res, next) ->
   res.render 'users/new'
 
+router.post '/', (req, res, next) ->
+  global.exorelay.send 'users.create', req.body, ->
+    res.redirect '/users'
 
 module.exports = router;
