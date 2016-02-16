@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  img(src="images/logo.jpg" width=200 height=150)
+  h1 Create a user
+
+  form(action="/users")
+
+    label name
+    input(name="name")
+
+    label password
+    input(name="password")
+
+    input(type="submit" value="Save")
