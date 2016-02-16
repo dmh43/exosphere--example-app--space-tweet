@@ -11,7 +11,7 @@ module.exports =
 
   entry:
     'webpack/hot/dev-server'                                         # For hot style updates
-    'webpack-dev-server/client?http://localhost:8080'                # The script refreshing the browser on none hot updates
+    'webpack-dev-server/client?http://localhost:{{asset-port}}'                # The script refreshing the browser on none hot updates
      path.resolve __dirname, '..', 'app', 'client', 'javascripts', 'main.ls'   # Our application
 
 

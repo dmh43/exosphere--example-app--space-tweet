@@ -10,8 +10,9 @@ debug = require('debug')('web:assets')
 
 class AssetServer extends EventEmitter
 
-  ->
+  (@port) ->
 
+    webpack-config.entry[1] = webpack-config.entry[1].replace '{{asset-port}}', @port
     @compiler = webpack webpack-config
       ..plugin 'compile', -> debug 'starting asset compilation'
       ..plugin 'done', -> debug "asset compilation completed"
@@ -25,8 +26,8 @@ class AssetServer extends EventEmitter
         colors: true
 
 
-  listen: (@port, done) ->
-    @server.listen +port, 'localhost', done
+  listen: (done) ->
+    @server.listen @port, 'localhost', done
 
 
 

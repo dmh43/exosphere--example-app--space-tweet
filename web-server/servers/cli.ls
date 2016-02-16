@@ -25,6 +25,7 @@ Usage:
   start -h | --help
   start -v | --version
 """
+options = docopt doc, help: no
 
 
 global.config = {}
@@ -39,8 +40,8 @@ start-html-server = (done) ->
 
 
 start-asset-server = (done) ->
-  asset-server = new AssetServer
-    ..listen +options['--assets-port'], ->
+  asset-server = new AssetServer +options['--assets-port']
+    ..listen ->
       debug "#{green 'asset server'} online at port #{cyan asset-server.port}"
       global.config['asset-port'] = asset-server.port
       done!
@@ -62,8 +63,6 @@ run = ->
     debug green 'all systems go'
 
 
-
-options = docopt doc, help: no
 switch
 | options['-h'] or options['--help']     =>  console.log doc
 | options['-v'] or options['--version']  =>
