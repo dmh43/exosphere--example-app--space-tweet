@@ -4,15 +4,7 @@ name: SpaceTweet
 description: an example for an ExoSphere application
 
 services:
-  exocomm:
-    port: 3100
-    location: ~/exocomm-dev/
-    start-command: exocomm run --port 3100 --users-port 3020 --webserver-port 3002
-  users:
-    port: 3010
-    location: ./users-service
-    start-command: bin/start --port 3020 --exocomm-port 3100
   web:
-    port: 3000
     location: ./web-server
-    start-command: bin/start --html-port 3000 --asset-port 3001 --exorelay-port 3002 --exocomm-port 3100
+  users:
+    location: ~/users-service
