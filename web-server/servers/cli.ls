@@ -21,7 +21,7 @@ doc = """
 Provides Exosphere communication infrastructure services in development mode.
 
 Usage:
-  start --html-port=<html-port> --assets-port=<assets-port> --exorelay-port=<exorelay-port>
+  start --exorelay-port=<exorelay-port> --exocomm-port=<exocomm-port>
   start -h | --help
   start -v | --version
 """
@@ -33,25 +33,25 @@ global.config = {}
 start-html-server = (done) ->
   html-server = new HtmlServer
     ..on 'error', (err) -> console.log red err
-    ..listen +options['--html-port']
     ..on 'listening', ->
-      debug "#{green 'HTML server'} online at port #{cyan html-server.port!}"
+      console.log "#{green 'HTML server'} online at port #{cyan html-server.port!}"
       done!
+    ..listen 3000
 
 
 start-asset-server = (done) ->
-  asset-server = new AssetServer +options['--assets-port']
+  asset-server = new AssetServer 3001
     ..listen ->
-      debug "#{green 'asset server'} online at port #{cyan asset-server.port}"
+      console.log "#{green 'asset server'} online at port #{cyan asset-server.port}"
       global.config['asset-port'] = asset-server.port
       done!
 
 
 start-exorelay = (done) ->
-  exorelay = new ExoRelay
+  global.exorelay = new ExoRelay exocomm-port: +options['--exocomm-port']
     ..on 'error', (err) -> console.log red err
     ..on 'online', (port) ->
-      debug "#{green 'ExoRelay'} online at port #{cyan port}"
+      console.log "#{green 'ExoRelay'} online at port #{cyan port}"
       done!
     ..listen +options['--exorelay-port']
 
@@ -60,7 +60,7 @@ run = ->
   async.parallel [start-html-server,
                   start-asset-server,
                   start-exorelay], (err) ->
-    debug green 'all systems go'
+    console.log green 'all systems go'
 
 
 switch
