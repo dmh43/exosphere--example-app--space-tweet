@@ -2,6 +2,7 @@
 ---
 name: SpaceTweet
 description: an example for an ExoSphere application
+version: 0.0.1
 
 services:
   web:
