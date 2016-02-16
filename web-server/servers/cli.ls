@@ -27,12 +27,14 @@ Usage:
 """
 
 
+global.config = {}
+
 start-html-server = (done) ->
-  server = new HtmlServer
+  html-server = new HtmlServer
     ..on 'error', (err) -> console.log red err
     ..listen +options['--html-port']
     ..on 'listening', ->
-      debug "#{green 'HTML server'} online at port #{cyan server.port!}"
+      debug "#{green 'HTML server'} online at port #{cyan html-server.port!}"
       done!
 
 
@@ -40,6 +42,7 @@ start-asset-server = (done) ->
   asset-server = new AssetServer
     ..listen +options['--assets-port'], ->
       debug "#{green 'asset server'} online at port #{cyan asset-server.port}"
+      global.config['asset-port'] = asset-server.port
       done!
 
 
