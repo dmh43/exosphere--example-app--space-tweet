@@ -1,10 +1,8 @@
-require! \express
-router = express.Router!
+class HomeController
 
-
-router.get '/', (req, res, next) ->
-  res.render 'index'
+  index: (req, res) ->
+    res.render 'index'
 
 
 
-module.exports = router
+module.exports = HomeController
