@@ -17,7 +17,8 @@
     "jade": "~1.11.0",
     "livescript": "^1.4.0",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "webpack-dev-middleware": "^1.5.1"
   },
   "devDependencies": {
     "david": "^7.0.0",

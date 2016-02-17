@@ -9,6 +9,9 @@ require! {
   \morgan : logger
   'cookie-parser'
   'body-parser'
+  './webpack-config'
+  'webpack-dev-middleware'
+  'webpack'
 }
 
 
@@ -16,6 +19,10 @@ class HtmlServer extends EventEmitter
 
   ->
     @app = express!
+
+    dev-middleware = webpack-config
+    |> webpack
+    |> webpack-dev-middleware _, publicPath: '/assets/', noInfo: yes
 
     # view engine setup
     @app.set 'views', path.join(__dirname, '..', 'app', 'server', 'views')
@@ -26,8 +33,8 @@ class HtmlServer extends EventEmitter
       ..use bodyParser.json!
       ..use bodyParser.urlencoded extended: false
       ..use cookieParser!
-      ..use express.static path.join(__dirname, '..', 'app', 'client')
 
+      ..use dev-middleware
       ..use exprestive app-dir: '../app/server', controllers-pattern: 'controllers/*.ls'
 
       ..use (req, res, next) ->   # route not found

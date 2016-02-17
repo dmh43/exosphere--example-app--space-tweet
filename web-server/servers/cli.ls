@@ -39,13 +39,6 @@ start-html-server = (done) ->
     ..listen 3000
 
 
-start-asset-server = (done) ->
-  asset-server = new AssetServer 3001
-    ..listen ->
-      console.log "#{green 'asset server'} online at port #{cyan asset-server.port}"
-      global.config['asset-port'] = asset-server.port
-      done!
-
 
 start-exorelay = (done) ->
   global.exorelay = new ExoRelay exocomm-port: +options['--exocomm-port']
@@ -58,7 +51,6 @@ start-exorelay = (done) ->
 
 run = ->
   async.parallel [start-html-server,
-                  start-asset-server,
                   start-exorelay], (err) ->
     console.log green 'all systems go'
 
