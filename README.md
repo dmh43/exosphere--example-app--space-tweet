@@ -20,3 +20,33 @@ Future work:
 * [comments service](comments_service): stores comments for tweets
 
 ![architecture diagram](documentation/architecture.png)
+
+
+## Installation
+
+This assumes you have the
+[ExoSphere SDK](https://github.com/Originate/exosphere-cli-run)
+installed.
+
+
+* install the [users service](https://github.com/Originate/exosphere-users-service)
+  and all its dependencies on your machine
+
+
+* clone this repo
+
+  ```
+  git clone git@github.com:Originate/exosphere--example-app--space-tweet.git
+  ```
+
+* set up all the services in this application:
+
+  ```
+  exo-install
+  ```
+
+* start this application
+
+  ```
+  exo-run
+  ```
