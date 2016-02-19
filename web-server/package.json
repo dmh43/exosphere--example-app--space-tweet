@@ -10,13 +10,13 @@
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
     "debug": "~2.2.0",
-    "exorelay": "^0.8.0",
+    "exorelay": "^0.12.0",
     "express": "~4.13.1",
     "exprestive": "^1.0.0",
     "get-env": "^0.4.0",
     "jade": "~1.11.0",
     "livescript": "^1.4.0",
-    "morgan": "~1.6.1",
+    "morgan": "^1.7.0",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {

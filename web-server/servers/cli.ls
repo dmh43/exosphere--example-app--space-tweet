@@ -21,7 +21,7 @@ doc = """
 Provides Exosphere communication infrastructure services in development mode.
 
 Usage:
-  start --exorelay-port=<exorelay-port> --exocomm-port=<exocomm-port>
+  start --name=<name> --exorelay-port=<exorelay-port> --exocomm-port=<exocomm-port>
   start -h | --help
   start -v | --version
 """
@@ -48,7 +48,7 @@ start-asset-server = (done) ->
 
 
 start-exorelay = (done) ->
-  global.exorelay = new ExoRelay exocomm-port: +options['--exocomm-port']
+  global.exorelay = new ExoRelay service-name: options['--name'], exocomm-port: +options['--exocomm-port']
     ..on 'error', (err) -> console.log red err
     ..on 'online', (port) ->
       console.log "#{green 'ExoRelay'} online at port #{cyan port}"
