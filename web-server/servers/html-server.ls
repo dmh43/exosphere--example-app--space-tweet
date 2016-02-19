@@ -5,7 +5,7 @@ require! {
   'http'
   \path
   'rails-delegate' : {delegate, delegate-event}
-  # 'serve-favicon'
+  'serve-favicon'
   \morgan : logger
   'cookie-parser'
   'body-parser'
@@ -21,7 +21,7 @@ class HtmlServer extends EventEmitter
     @app.set 'views', path.join(__dirname, '..', 'app', 'server', 'views')
       ..set 'view engine', \jade
 
-      # ..use(serve-favicon(path.join(__dirname, 'public', 'favicon.ico')))
+      ..use serve-favicon path.join(__dirname, '..', 'app', 'server', 'images', 'favicon.ico')
       ..use logger \dev
       ..use bodyParser.json!
       ..use bodyParser.urlencoded extended: false
