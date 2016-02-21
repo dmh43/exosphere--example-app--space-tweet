@@ -21,9 +21,9 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "david": "^7.0.0",
     "html-webpack-plugin": "^2.8.1",
     "livescript-loader": "^0.1.5",
+    "npm-check-updates": "^2.5.8",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   }
