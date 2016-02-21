@@ -17,16 +17,6 @@ debug = require('debug')('web:server')
 
 console.log dim "SpaceTweet web server #{version}\n"
 
-doc = """
-Provides Exosphere communication infrastructure services in development mode.
-
-Usage:
-  start --name=<name> --exorelay-port=<exorelay-port> --exocomm-port=<exocomm-port>
-  start -h | --help
-  start -v | --version
-"""
-options = docopt doc, help: no
-
 
 global.config = {}
 
@@ -48,22 +38,15 @@ start-asset-server = (done) ->
 
 
 start-exorelay = (done) ->
-  global.exorelay = new ExoRelay service-name: options['--name'], exocomm-port: +options['--exocomm-port']
+  global.exorelay = new ExoRelay service-name: process.env.SERVICE_NAME, exocomm-port: process.env.EXOCOMM_PORT
     ..on 'error', (err) -> console.log red err
     ..on 'online', (port) ->
       console.log "#{green 'ExoRelay'} online at port #{cyan port}"
       done!
-    ..listen +options['--exorelay-port']
+    ..listen process.env.EXORELAY_PORT
 
 
-run = ->
-  async.parallel [start-html-server,
-                  start-asset-server,
-                  start-exorelay], (err) ->
-    console.log green 'all systems go'
-
-
-switch
-| options['-h'] or options['--help']     =>  console.log doc
-| options['-v'] or options['--version']  =>
-| otherwise                              =>  run options
+async.parallel [start-html-server,
+                start-asset-server,
+                start-exorelay], (err) ->
+  console.log green 'all systems go'
