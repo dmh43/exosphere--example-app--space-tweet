@@ -6,7 +6,6 @@
 require! {
   'async'
   'chalk' : {cyan, dim, green, red}
-  'docopt' : {docopt}
   'exorelay' : ExoRelay
   '../package.json' : {name, version}
   '../servers/html-server.ls' : HtmlServer
