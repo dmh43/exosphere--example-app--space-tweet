@@ -9,3 +9,10 @@ services:
     location: ./web-server
   users:
     location: ../exosphere-users-service
+  tweets:
+    location: ~/snippets-service
+    configuration:
+      mongodb-host: localhost
+      mongodb-port: 27017
+      database-name: spacetweet-tweets
+
