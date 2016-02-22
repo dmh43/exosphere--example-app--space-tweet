@@ -2,9 +2,6 @@
   "name": "spacetweet-webserver",
   "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "start": "bin/start"
-  },
   "dependencies": {
     "async": "^1.5.2",
     "body-parser": "^1.14.2",
