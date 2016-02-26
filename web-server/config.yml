@@ -11,6 +11,8 @@ messages:
   sends:
     - users.list
     - users.create
+    - tweets.list
   receives:
     - users.listed
     - users.created
+    - tweets.listed

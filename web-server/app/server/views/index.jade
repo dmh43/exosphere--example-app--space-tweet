@@ -1,4 +1,10 @@
 extends layout
 
 block content
+
+  h2 the latest tweets (#{count})
+    each tweet in tweets
+      li name: #{tweet.name}, password: #{user.password}
+
+
   a(href="users") user manager
