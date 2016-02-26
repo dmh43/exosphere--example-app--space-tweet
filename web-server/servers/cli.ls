@@ -7,6 +7,7 @@ require! {
   'async'
   'chalk' : {cyan, dim, green, red}
   'exorelay' : ExoRelay
+  'nitroglycerin' : N
   '../package.json' : {name, version}
   '../servers/html-server.ls' : HtmlServer
   '../servers/asset-server.ls' : AssetServer
@@ -45,7 +46,6 @@ start-exorelay = (done) ->
     ..listen process.env.EXORELAY_PORT
 
 
-async.parallel [start-html-server,
-                start-asset-server,
-                start-exorelay], (err) ->
-  console.log green 'all systems go'
+start-exorelay N ->
+  async.parallel [start-html-server, start-asset-server], N ->
+    console.log green 'all systems go'

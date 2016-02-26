@@ -28,7 +28,10 @@ class HtmlServer extends EventEmitter
       ..use cookieParser!
       ..use express.static path.join(__dirname, '..', 'app', 'client')
 
-      ..use exprestive app-dir: '../app/server', controllers-pattern: 'controllers/*.ls'
+      ..use exprestive do
+        app-dir: '../app/server'
+        controllers-pattern: 'controllers/*.ls'
+        dependencies: global.exorelay
 
       ..use (req, res, next) ->   # route not found
         err = new Error 'Not Found'

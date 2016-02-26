@@ -1971,6 +1971,11 @@
       "from": "nested-error-stacks@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/nested-error-stacks/-/nested-error-stacks-1.0.2.tgz"
     },
+    "nitroglycerin": {
+      "version": "1.0.3",
+      "from": "nitroglycerin@latest",
+      "resolved": "https://registry.npmjs.org/nitroglycerin/-/nitroglycerin-1.0.3.tgz"
+    },
     "node-alias": {
       "version": "1.0.4",
       "from": "node-alias@>=1.0.3 <2.0.0",
