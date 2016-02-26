@@ -5,7 +5,7 @@ class UsersController
 
   index: (req, res) ->
     @send 'users.list', null, (users) ->
-      res.render 'users/index', {users}
+      res.render 'users/index', users
 
 
   new: (req, res) ->

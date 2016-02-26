@@ -1,10 +1,10 @@
 extends ../layout
 
 block content
-  h2 #{users.count} Users
+  h2 #{count} Users
 
   ul
-    each user in users.users
+    each user in users
       li name: #{user.name}, password: #{user.password}
 
 
