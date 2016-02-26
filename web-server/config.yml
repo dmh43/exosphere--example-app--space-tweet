@@ -12,7 +12,9 @@ messages:
     - users.list
     - users.create
     - tweets.list
+    - tweets.create
   receives:
     - users.listed
     - users.created
     - tweets.listed
+    - tweets.created

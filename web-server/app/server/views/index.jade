@@ -3,8 +3,17 @@ extends layout
 block content
 
   h2 the latest tweets (#{count})
-    each tweet in tweets
-      li name: #{tweet.name}, password: #{user.password}
+  each tweet in tweets
+    li name: #{tweet.content}, user: #{tweet.owner_id}
+
+  h3 tweet something!
+  form(action="/tweets" method="post")
+
+    label content
+    input(name="content")
+
+    input(type="submit" value="tweet")
 
 
+  h2 Users
   a(href="users") user manager
