@@ -38,7 +38,7 @@ start-asset-server = (done) ->
 
 
 start-exorelay = (done) ->
-  global.exorelay = new ExoRelay service-name: process.env.SERVICE_NAME, exocomm-port: process.env.EXOCOMM_PORT
+  global.exorelay = new ExoRelay service-name: process.env.SERVICE_NAME, exocom-port: process.env.EXOCOM_PORT
     ..on 'error', (err) -> console.log red err
     ..on 'online', (port) ->
       console.log "#{green 'ExoRelay'} online at port #{cyan port}"
