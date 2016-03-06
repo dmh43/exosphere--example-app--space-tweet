@@ -3,9 +3,16 @@ extends ../layout
 block content
   h2 #{count} Users
 
-  ul
+  table
+    tr
+      th NAME
+      th PASSWORD
+      th
     each user in users
-      li name: #{user.name}, password: #{user.password}
+      tr
+        td= user.name
+        td= user.password
+        td
 
 
   a(href="/users/new") add a user
