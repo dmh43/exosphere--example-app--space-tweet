@@ -14,8 +14,8 @@ class AssetServer extends EventEmitter
 
     webpack-config.entry[1] = webpack-config.entry[1].replace '{{asset-port}}', @port
     @compiler = webpack webpack-config
-      ..plugin 'compile', -> debug 'starting asset compilation'
-      ..plugin 'done', -> debug "asset compilation completed"
+      ..plugin 'compile', -> console.log 'starting asset compilation'
+      ..plugin 'done', -> console.log "asset compilation completed"
 
     @server = new webpack-dev-server @compiler,
       public-path: '/build/',
