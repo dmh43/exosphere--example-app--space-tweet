@@ -1,0 +1,19 @@
+{
+  "name": "exosphere--demo--space-tweet",
+  "version": "0.0.1",
+  "author": "Kevin Goslar",
+  "description": "Medium-sized Exosphere example app",
+  "devDependencies": {
+    "cucumber": "0.9.5"
+  },
+  "homepage": "https://github.com/Originate/exosphere--example-app--space-tweet#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Originate/exosphere--example-app--space-tweet.git"
+  },
+  "scripts": {
+    "test": "bin/spec"
+  }
+}
