@@ -1,12 +1,13 @@
 require! {
   'events' : {EventEmitter}
-  \express
+  'express'
   'exprestive'
+  'jade'
   'http'
-  \path
+  'path'
   'rails-delegate' : {delegate, delegate-event}
   'serve-favicon'
-  \morgan : logger
+  'morgan' : logger
   'cookie-parser'
   'body-parser'
 }
