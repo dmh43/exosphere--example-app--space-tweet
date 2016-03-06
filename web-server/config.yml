@@ -9,11 +9,14 @@ startup:
 
 messages:
   sends:
+    - user.get-details
     - users.list
     - users.create
     - tweets.list
     - tweets.create
   receives:
+    - user.details
+    - user.not-found
     - users.listed
     - users.created
     - tweets.listed

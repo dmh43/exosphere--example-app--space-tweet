@@ -16,6 +16,10 @@ class UsersController
     @send 'users.create', req.body, ->
       res.redirect '/users'
 
+  show: (req, res) ->
+    @send 'user.get-details', id: req.params.id, (user) ->
+      console.log user
+      res.render 'users/show', {user}
 
 
 module.exports = UsersController
