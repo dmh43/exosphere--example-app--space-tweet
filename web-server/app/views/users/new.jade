@@ -1,14 +1,22 @@
 extends ../layout
 
 block content
-  h2 Create a user
+  h2 Sign Up!
 
   form(action="/users" method="post")
 
-    label name
-    input(name="name")
+    table
+      tr
+        th name
+        td
+          input(name="name")
 
-    label password
-    input(name="password")
+      tr
+        th password
+        td
+          input(name="password")
 
-    input(type="submit" value="Save")
+      tr
+        th
+        td
+          input(type="submit" value="Sign up!")
