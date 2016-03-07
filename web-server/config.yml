@@ -16,6 +16,7 @@ messages:
     - users.create
     - tweets.list
     - tweets.create
+    - tweets.delete
   receives:
     - user.details
     - user.not-found
@@ -25,3 +26,4 @@ messages:
     - users.created
     - tweets.listed
     - tweets.created
+    - tweets.deleted
