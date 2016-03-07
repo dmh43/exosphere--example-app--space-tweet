@@ -22,4 +22,9 @@ class UsersController
       res.render 'users/show', {user}
 
 
+  edit: (req, res) ->
+    @send 'user.get-details', id: req.params.id, (user) ->
+      res.render 'users/edit', {user}
+
+
 module.exports = UsersController

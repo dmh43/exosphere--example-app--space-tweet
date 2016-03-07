@@ -14,6 +14,7 @@ block content
           a(href="/users/#{user.id}") #{user.name}
         td= user.password
         td
+          a(href="users/#{user.id}/edit") edit
 
 
   a(href="/users/new") add a user
