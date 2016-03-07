@@ -33,11 +33,14 @@ class UsersController
 
 
   update: (req, res) ->
-    data = merge true, req.params, req.body
-    console.log 11111111111
-    console.log data
-    @send 'user.update', data, ->
+    @send 'user.update', merge(true, req.params, req.body), ->
       res.redirect '/users'
+
+
+  destroy: (req, res) ->
+    @send 'user.delete', req.params, ->
+      res.redirect '/users'
+
 
 
 module.exports = UsersController
