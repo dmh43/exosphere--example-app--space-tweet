@@ -4,7 +4,7 @@ class HomeController
 
 
   index: (req, res) ->
-    @send 'tweets.list', owner_id: '1', (tweets) ->
+    @send 'tweets.list', {}, (tweets) ->
       res.render 'index', tweets
 
 
