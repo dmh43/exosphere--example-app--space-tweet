@@ -3,8 +3,12 @@ extends layout
 block content
 
   h2 the latest tweets (#{count})
-  each tweet in tweets
-    li name: #{tweet.content}, user: #{tweet.owner_id}
+
+  table
+    each tweet in tweets
+      tr
+        td= tweet.content
+        td= tweet.owner_id
 
   h3 tweet something!
   form(action="/tweets" method="post")
