@@ -4,6 +4,7 @@ require! {
   'exprestive'
   'jade'
   'http'
+  'method-override'
   'path'
   'rails-delegate' : {delegate, delegate-event}
   'serve-favicon'
@@ -17,6 +18,7 @@ class HtmlServer extends EventEmitter
 
   ->
     @app = express!
+      ..use methodOverride '_method'
 
     # view engine setup
     @app.set 'views', path.join(__dirname, '..', 'app', 'server', 'views')

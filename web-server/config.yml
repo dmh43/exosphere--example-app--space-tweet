@@ -10,6 +10,7 @@ startup:
 messages:
   sends:
     - user.get-details
+    - user.update
     - users.list
     - users.create
     - tweets.list
@@ -17,6 +18,7 @@ messages:
   receives:
     - user.details
     - user.not-found
+    - user.updated
     - users.listed
     - users.created
     - tweets.listed
