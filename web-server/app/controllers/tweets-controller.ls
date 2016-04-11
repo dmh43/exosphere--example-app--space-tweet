@@ -1,6 +1,13 @@
-class TweetsController
+require! {
+  '../middleware/ensure-authenticated'
+  'exprestive': {BaseController}
+}
+
+
+class TweetsController extends BaseController
 
   ({@send}) ->
+    @useMiddleware ensure-authenticated
 
 
   create: (req, res) ->

@@ -1,11 +1,14 @@
 require! {
+  '../middleware/ensure-authenticated'
+  'exprestive': {BaseController}
   'merge'
 }
 
 
-class UsersController
+class UsersController extends BaseController
 
   ({@send}) ->
+    @useMiddleware ensure-authenticated
 
 
   index: (req, res) ->

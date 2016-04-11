@@ -16,6 +16,11 @@ messages:
     - users.create
     - tweets.list
     - tweets.create
+    - password-auth.authenticate
+    - session.create
+    - session.destroy
+    - session.read
+    - session.update
   receives:
     - user.details
     - user.not-found
@@ -23,5 +28,12 @@ messages:
     - user.deleted
     - users.listed
     - users.created
+    - password-auth.valid-credentials
+    - password-auth.invalid-credentials
     - tweets.listed
     - tweets.created
+    - session.created
+    - session.destroyed
+    - session.found
+    - session.not-found
+    - session.updated

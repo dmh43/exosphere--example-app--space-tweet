@@ -1,6 +1,13 @@
-class HomeController
+require! {
+  '../middleware/ensure-authenticated'
+  'exprestive': {BaseController}
+}
+
+
+class HomeController extends BaseController
 
   ({@send}) ->
+    @useMiddleware ensure-authenticated
 
 
   index: (req, res) ->

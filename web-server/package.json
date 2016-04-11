@@ -10,7 +10,7 @@
     "debug": "2.2.0",
     "exorelay": "0.16.1",
     "express": "4.13.4",
-    "exprestive": "1.1.0",
+    "exprestive": "1.2.0",
     "jade": "1.11.0",
     "merge": "1.2.0",
     "method-override": "2.3.5",

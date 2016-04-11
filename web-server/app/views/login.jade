@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h2 Login
+  form(method="POST" action=routes.createSession())
+    label
+      span Username
+      input(name="username")
+    label
+      span Password
+      input(name="password" type="password")
+    input(type="submit")

@@ -11,3 +11,7 @@ services:
     location: ../exosphere-users-service
   tweets:
     location: ../exosphere-tweets-service
+  auth:
+    location: ../exosphere-auth-service
+  session:
+    location: ../exosphere-session-service
