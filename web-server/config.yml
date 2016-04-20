@@ -3,18 +3,27 @@ description: Serves the web UI of SpaceTweet
 
 setup: npm install
 startup:
-  command: node_modules/.bin/lsc servers/cli.ls --name {{name}} --exorelay-port {{exorelay-port}} --exocom-port {{exocom-port}}
+  command: node_modules/.bin/lsc app --name {{name}} --exorelay-port {{exorelay-port}} --exocom-port {{exocom-port}}
   online-text: all systems go
 
 
 messages:
   sends:
+    - user.get-details
+    - user.delete
+    - user.update
     - users.list
     - users.create
     - tweets.list
     - tweets.create
+    - tweets.delete
   receives:
+    - user.details
+    - user.not-found
+    - user.updated
+    - user.deleted
     - users.listed
     - users.created
     - tweets.listed
     - tweets.created
+    - tweets.deleted
