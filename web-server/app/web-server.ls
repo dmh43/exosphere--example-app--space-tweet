@@ -7,34 +7,30 @@ require! {
   'method-override'
   'path'
   'rails-delegate' : {delegate, delegate-event}
-  'serve-favicon'
   'morgan' : logger
   'cookie-parser'
   'body-parser'
 }
 
 
-class HtmlServer extends EventEmitter
+class WebServer extends EventEmitter
 
   ->
     @app = express!
       ..use methodOverride '_method'
 
     # view engine setup
-    @app.set 'views', path.join(__dirname, '..', 'app', 'server', 'views')
+    @app.set 'views', path.join __dirname, 'views'
       ..set 'view engine', \jade
 
-      ..use serve-favicon path.join(__dirname, '..', 'app', 'server', 'public', 'favicon.ico')
       ..use logger \dev
+      ..use express.static path.join __dirname, 'public'
+      ..use require '../webpack/middleware'
       ..use bodyParser.json!
       ..use bodyParser.urlencoded extended: false
       ..use cookieParser!
-      ..use express.static path.join(__dirname, '..', 'app', 'client')
 
-      ..use exprestive do
-        app-dir: '../app/server'
-        controllers-pattern: 'controllers/*.ls'
-        dependencies: global.exorelay
+      ..use exprestive dependencies: global.exorelay
 
       ..use (req, res, next) ->   # route not found
         err = new Error 'Not Found'
@@ -52,4 +48,4 @@ class HtmlServer extends EventEmitter
 
 
 
-module.exports = HtmlServer
+module.exports = WebServer

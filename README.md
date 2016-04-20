@@ -30,8 +30,10 @@ installed.
 
 
 * install the [users service](https://github.com/Originate/exosphere-users-service)
-  and all its dependencies on your machine
 
+* install the [tweets service](https://github.com/Originate/exosphere-tweets-service)
+
+* install MongoDB
 
 * clone this repo
 

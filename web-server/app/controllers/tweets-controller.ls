@@ -8,6 +8,11 @@ class TweetsController
       res.redirect '/'
 
 
+  destroy: (req, res) ->
+    @send 'tweets.delete', req.params, ->
+      res.redirect '/'
+
+
 
 module.exports = TweetsController
 
