@@ -5,7 +5,7 @@ block content
   h2 the latest tweets (#{count})
 
   table
-    each tweet in entries
+    each tweet in tweets
       tr
         td= tweet.content
         td= tweet.owner_id
