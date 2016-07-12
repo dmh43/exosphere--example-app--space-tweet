@@ -28,12 +28,11 @@ This assumes you have the
 [ExoSphere SDK](https://github.com/Originate/exosphere-cli-run)
 installed.
 
+* install and start MongoDB
 
-* install the [users service](https://github.com/Originate/exosphere-users-service)
+* clone the [users service](https://github.com/Originate/exosphere-users-service)
 
-* install the [tweets service](https://github.com/Originate/exosphere-tweets-service)
-
-* install MongoDB
+* clone the [tweets service](https://github.com/Originate/exosphere-tweets-service)
 
 * clone this repo
 
